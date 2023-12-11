@@ -12,8 +12,8 @@ use \lib\err\EWrongTokenFormat;
 
 class TimeCryptor implements ICryptor {
     private $private;
-    private  $verify;
-    private ITokenStorage $db;
+    private $verify;
+    private $db;
     
     public function __construct(ITokenStorage $db, string $private, string $verify)
     {
