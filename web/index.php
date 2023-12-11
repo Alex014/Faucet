@@ -1,6 +1,8 @@
 <?php
-ini_set('display_errors', true);
-error_reporting(E_ALL);
+if (file_exists(__DIR__ . '/../debug')) {
+    ini_set('display_errors', true);
+    error_reporting(E_ALL);
+}
 
 require_once __DIR__ . '/../lib/Container.php';
 require_once __DIR__ . '/../lib/Sqlite.php';

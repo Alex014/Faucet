@@ -1,6 +1,8 @@
 <?php
-ini_set('display_errors', true);
-error_reporting(E_ALL);
+if (file_exists(__DIR__ . '/../debug')) {
+    ini_set('display_errors', true);
+    error_reporting(E_ALL);
+}
 
 require_once __DIR__ . '/../lib/Container.php';
 
@@ -49,7 +51,7 @@ if (isset ($_POST['check']) && isset($_POST['token'])) {
 
     try {
         if ($cryptor->check($token)) {
-            throw new \Exception("Token isalready payed");
+            throw new \Exception("Token is already payed");
         }
 
         if (! $cryptor->verify($token)) {
