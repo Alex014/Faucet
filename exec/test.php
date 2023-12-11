@@ -12,6 +12,7 @@ if (file_exists(__DIR__ . '/../config/config.php')) {
     echo "config.php - OK";
 } else {
     echo "config.php - FAILED";
+    echo "\n";
     die();
 }
 
