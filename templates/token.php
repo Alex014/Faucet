@@ -126,6 +126,9 @@
             <li class="nav-item">
             <a class="nav-link"  href="/token.php">Withdrawal $$$</a>
             </li>
+            <li class="nav-item">
+            <a class="nav-link"  href="/about.php">About</a>
+            </li>
         </ul>
         </div>
     </div>
