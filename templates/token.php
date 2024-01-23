@@ -8,7 +8,7 @@
 
     <style>
         body {
-            background: URL(/assets/img/faucet.jpg) no-repeat center center fixed;
+            background: URL(/assets/img/ness-green.jpg) no-repeat center center fixed;
             background-size: cover;
             background-color: black !important;
         }
