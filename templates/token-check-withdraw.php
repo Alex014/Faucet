@@ -90,14 +90,14 @@
 
             <div class="input-group">
                 <span class="input-group-text">Time token</span>
-                <input name="token" type="text" class="form-control" id="token" value="<?=$token?>">
+                <input name="token" type="text" class="form-control pasted-token" id="token" value="<?=$token?>">
                 <span class="input-group-text paste_button" data-id="token">Paste</span>
             </div>
             <br/>
             <?php if (isset($withdraw) || (isset($check) && isset($err) && (true === $err))): ?>
                 <div class="input-group">
                     <span class="input-group-text">Address</span>
-                    <input name="address" type="text" class="form-control" id="address" value="<?=$address?>">
+                    <input name="address" type="text" class="form-control pasted-address" id="address" value="<?=$address?>">
                     <span class="input-group-text paste_button" data-id="address">Paste</span>
                 </div>
             <?php endif; ?>
@@ -145,10 +145,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" crossorigin="anonymous">      </script>
     <script src="https://diriectordoc.github.io/jQlipboard/src/w0.3/jQlipboard.min.js"></script>
     <script>
-        $(".paste_button").click(function (e) {
-            $('#' + $(this).data('id')).focus();
-            $('#' + $($this).data('id')).paste();
-        })
+        document.addEventListener('DOMContentLoaded', function() {
+  const pasteButtonElement = document.querySelector('.paste-button');
+  const pastedTokenElement = document.querySelector('.pasted-token');
+  const pastedAddressElement = document.querySelector('.pasted-address');
+
+  pasteButtonElement.addEventListener('click', function() {
+    navigator.clipboard.readText()
+      .then(function(clipboardText) {
+        // Check if the "pasted-token" input is empty
+        if (pastedTokenElement.value === '') {
+          // Paste the clipboard text into the "pasted-token" input
+          pastedTokenElement.value = clipboardText;
+        } else {
+          // Paste the clipboard text into the "pasted-address" input
+          pastedAddressElement.value = clipboardText;
+        }
+      })
+      .catch(function(err) {
+        console.error('Failed to read clipboard contents:', err);
+      });
+  });
+});
     </script>
   </body>
 </html>
